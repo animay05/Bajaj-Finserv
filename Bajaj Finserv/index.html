@@ -3,8 +3,7 @@
 <head>
     <title>Employee Data</title>
     <style>
-        /* CSS styles for the UI */
-        .search-container {
+        search-container {
             margin-bottom: 10px;
         }
 
@@ -39,7 +38,6 @@
     <div id="employeeList"></div>
 
     <script>
-        // JSON data
         var jsonData = {
             
                 "employees":[
@@ -669,21 +667,17 @@
                 ]
              }
         
-
-        // Get references to the HTML elements
         var searchInput = document.getElementById('searchInput');
         var filterSelect = document.getElementById('filterSelect');
         var employeeList = document.getElementById('employeeList');
 
-        // Function to filter and display the employee data
         function filterEmployees() {
             var searchValue = searchInput.value.toLowerCase();
             var filterValue = filterSelect.value.toLowerCase();
 
-            // Clear the employee list
             employeeList.innerHTML = '';
 
-            // Filter the employees based on search and filter values
+          
             var filteredEmployees = jsonData.employees.filter(function(employee) {
                 var name = employee.name ? employee.name.toLowerCase() : '';
                 var designation = employee.designation ? employee.designation.toLowerCase() : '';
@@ -691,8 +685,7 @@
 
                 return name.includes(searchValue) && (name.includes(filterValue) || designation.includes(filterValue) || skills.includes(filterValue));
             });
-
-            // Display the filtered employees
+            
             filteredEmployees.forEach(function(employee) {
                 var card = document.createElement('div');
                 card.className = 'employee-card';
@@ -713,11 +706,9 @@
             });
         }
 
-        // Add event listeners to the search input and filter select
         searchInput.addEventListener('input', filterEmployees);
         filterSelect.addEventListener('change', filterEmployees);
 
-        // Initial display of all employees
         filterEmployees();
     </script>
 </body>
